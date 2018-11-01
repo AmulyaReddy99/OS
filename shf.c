@@ -4,18 +4,12 @@ float atat,awt;
 
 void getdata(){
 	scanf("%d",&n);
-	for(i=0;i<n;i++){
-		scanf("%d%d",&at[i],&bt[i]);
-		if (mina>at[i]) {mina=at[i]; minb=bt[i];}
-	}
+	for(i=0;i<n;i++)
+		scanf("%d%d",&at[i],&bt[i]);	
 	int j=0;
 	for(i=0;i<n;i++){
 		for(j=0;j<n;j++){
-			if(bt[i]==bt[j] && at[i]<at[j] && i>j){
-				temp=bt[j]; bt[j]=bt[i]; bt[i]=temp;
-				temp=at[j]; at[j]=at[i]; at[i]=temp;
-			}
-			else if(bt[i]<bt[j]){
+			if(at[i]<at[j]){
 				temp=bt[j]; bt[j]=bt[i]; bt[i]=temp;
 				temp=at[j]; at[j]=at[i]; at[i]=temp;
 			}
