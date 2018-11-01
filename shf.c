@@ -1,5 +1,5 @@
 #include<stdio.h>
-int i,n,at[10],bt[10],ct[10],tat[10],wt[10],temp,mina=200,minb;
+int i,n,at[10],bt[10],b[10],ct[10],tat[10],wt[10],temp,mina=200,minb;
 float atat,awt;
 
 void getdata(){
@@ -21,15 +21,25 @@ void getdata(){
 			}
 		}
 	}
+	for (i = 0; i < n; i++) b[i]=bt[i];
+}
+void minimum(){
+	int mini=100;
+	for(j=0;j<n && j<=s;j++){
+		if(b[j]!=0 && mini>b[j]){
+			mini=b[j];
+			min_i=j; 
+		}
+	}
 }
 void compute(){
-	int s=mina+minb;
+	s=at[0]+bt[0]; b[0]=0; ct[0]=s;
 	for(i=0;i<n;i++){
-		if(at[i]!=mina){
-			s+=bt[i];
-			ct[i]=s;
-		}
-		else ct[i]=mina+minb;
+		minimum();
+		s+=b[min_i]; b[min_i]=0;
+		ct[min_i]=s;
+	}
+	for(i=0;i<n;i++){
 		tat[i]=ct[i]-at[i];
 		wt[i]=tat[i]-bt[i];
 	}
